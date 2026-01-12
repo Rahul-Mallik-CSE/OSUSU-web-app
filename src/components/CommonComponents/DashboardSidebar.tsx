@@ -90,22 +90,23 @@ function DashboardSidebarContent() {
       <Sidebar className="border-r-0  " collapsible="icon">
         <SidebarContent className="bg-white">
           <div
-            className={`flex items-center justify-center  px-0 md:px-0 mx-0 py-4 relative ${
+            className={`flex flex-col items-center justify-center  px-0 md:px-0 mx-0 py-4 relative ${
               isCollapsed ? "px-0" : "gap-2"
             }`}
           >
-            <div className="flex items-center gap-3">
-              <div></div>
-              <Link href="/">
-                <Image
-                  src=""
-                  alt="Logo"
-                  width={48}
-                  height={48}
-                  className="rounded-xl object-contain"
-                />
-              </Link>
+            <div className="flex items-center gap-2">
+              <div className="bg-[#56cab1] rounded-md text-3xl font-bold text-black px-2 py-0 flex items-center justify-center">
+                0
+              </div>
+              <div
+                className={`text-2xl ${
+                  isCollapsed ? "hidden" : "block"
+                } font-semibold `}
+              >
+                OSUSU
+              </div>
             </div>
+            <div></div>
           </div>
 
           <SidebarMenu
