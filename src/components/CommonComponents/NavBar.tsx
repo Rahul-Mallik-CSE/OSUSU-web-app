@@ -5,19 +5,9 @@
 import { Bell } from "lucide-react";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useProfileDetailsQuery } from "@/redux/freatures/settingAPI";
-import { getFullImageFullUrl } from "@/lib/utils";
-
+import { SidebarTrigger } from "../ui/sidebar";
 const NavBar = () => {
   const pathname = usePathname();
-  const { data: profileData } = useProfileDetailsQuery();
-
-  const userData = profileData?.data;
-  const userName = userData?.first_name || "User";
-  const userImage = userData?.image
-    ? getFullImageFullUrl(userData.image)
-    : "/logo.png";
-  const firstName = userName.split(" ")[0];
 
   if (
     pathname === "/sign-in" ||
@@ -34,9 +24,10 @@ const NavBar = () => {
     <>
       <div className="sticky top-0 z-40 w-full h-16 bg-white flex items-center px-4 md:px-8 shadow-md border border-transparent">
         <div className="w-full flex justify-between items-center">
+          <SidebarTrigger />
           <div className="flex-1">
             <h1 className="text-2xl md:text-3xl font-extrabold text-gray-900">
-              Welcome Back, <span className="text-orange-500">{firstName}</span>
+              Welcome Back, <span className="text-orange-500">User</span>
             </h1>
           </div>
 
@@ -54,7 +45,7 @@ const NavBar = () => {
               aria-label="Profile"
             >
               <Image
-                src={userImage}
+                src="/logo.png"
                 alt="profile"
                 width={36}
                 height={36}
@@ -62,7 +53,7 @@ const NavBar = () => {
                 unoptimized
               />
               <span className="text-base md:text-lg text-gray-800 font-medium truncate max-w-[150px]">
-                {userName}
+                User
               </span>
             </button>
           </div>

@@ -20,17 +20,9 @@ import {
 import { usePathname, useRouter } from "next/navigation";
 import Image from "next/image";
 import { useState } from "react";
-import {
-  IoDocumentTextOutline,
-  IoChatbubblesOutline,
-  IoGridOutline,
-} from "react-icons/io5";
-import { RiBriefcaseLine, RiMapPinLine } from "react-icons/ri";
-
-import { AiOutlineDollarCircle } from "react-icons/ai";
-import { FiSettings } from "react-icons/fi";
-import { BiSupport, BiUserPlus } from "react-icons/bi";
-import { FaShieldAlt, FaUserAlt } from "react-icons/fa";
+import { IoGridOutline, IoWalletOutline } from "react-icons/io5";
+import { BiSupport } from "react-icons/bi";
+import { FaUserAlt } from "react-icons/fa";
 import { IoLogOutOutline } from "react-icons/io5";
 import LogoutModal from "./LogOutModal";
 import {
@@ -39,6 +31,9 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { PiUsersThreeLight } from "react-icons/pi";
+import { GoCreditCard } from "react-icons/go";
+import { TbUsersPlus } from "react-icons/tb";
 
 // import { logout } from "@/service/authService";
 export default function DashboardSidebar() {
@@ -78,42 +73,32 @@ function DashboardSidebarContent() {
 
   const navItems = [
     { href: "/", label: "Dashboard", icon: IoGridOutline },
-    { href: "/job-management", label: "Job Management", icon: RiBriefcaseLine },
+    { href: "/my-group", label: "My Group", icon: PiUsersThreeLight },
+
     {
-      href: "/preferred-operatives",
-      label: "Preferred Operatives",
-      icon: FaShieldAlt,
+      href: "/wallet",
+      label: "Wallet",
+      icon: IoWalletOutline,
     },
-    { href: "/contracts", label: "Contracts", icon: IoDocumentTextOutline },
-    { href: "/chat", label: "Chat", icon: IoChatbubblesOutline },
-    {
-      href: "/operatives-tracker",
-      label: "Operatives Tracker",
-      icon: RiMapPinLine,
-    },
-    { href: "/payroll", label: "Payroll", icon: AiOutlineDollarCircle },
-    { href: "/settings", label: "Settings", icon: FiSettings },
-    { href: "/support", label: "Support", icon: BiSupport },
-    { href: "/my-referral-user", label: "My Referral User", icon: BiUserPlus },
+    { href: "/ledger", label: "Ledger", icon: GoCreditCard },
+    { href: "/referrals", label: "Referrals", icon: TbUsersPlus },
+    { href: "/support-faq", label: "Support & FAQ", icon: BiSupport },
   ];
 
   return (
     <>
-      {/* Mobile menu button */}
-      <div className="fixed top-4 left-4 z-40 md:hidden">
-        <SidebarTrigger />
-      </div>
       <Sidebar className="border-r-0  " collapsible="icon">
         <SidebarContent className="bg-white">
           <div
-            className={`flex items-center justify-center  px-0 md:px-4 py-4 relative ${
-              isCollapsed ? "px-2" : "gap-2"
+            className={`flex items-center justify-center  px-0 md:px-0 mx-0 py-4 relative ${
+              isCollapsed ? "px-0" : "gap-2"
             }`}
           >
             <div className="flex items-center gap-3">
+              <div></div>
               <Link href="/">
                 <Image
-                  src="/logo.png"
+                  src=""
                   alt="Logo"
                   width={48}
                   height={48}
@@ -121,16 +106,11 @@ function DashboardSidebarContent() {
                 />
               </Link>
             </div>
-
-            {/* Collapse button for desktop */}
-            <div className={`absolute top-1 hidden md:block right-0`}>
-              <SidebarTrigger />
-            </div>
           </div>
 
           <SidebarMenu
             className={
-              isCollapsed ? "px-2 space-y-2 items-center" : "md:px-6 space-y-3"
+              isCollapsed ? "px-0 space-y-2 items-center" : "md:px-0 space-y-2"
             }
           >
             {navItems.map((item) => (
@@ -147,70 +127,17 @@ function DashboardSidebarContent() {
             ))}
           </SidebarMenu>
         </SidebarContent>
-        <SidebarFooter className={`bg-white  ${isCollapsed ? "px-2" : "px-6"}`}>
-          <div className={`${isCollapsed ? "w-full" : "w-full"} py-4`}>
-            {!isCollapsed ? (
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <div className="bg-blue-50 rounded-lg p-1 flex items-center gap-4 cursor-pointer hover:bg-blue-100 transition-colors">
-                    <Image
-                      src="/logo.png"
-                      alt="profile"
-                      width={34}
-                      height={34}
-                      className="rounded-full object-cover"
-                      unoptimized
-                    />
-                    <div className="flex-1">
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <p className="text-sm font-semibold truncate max-w-[120px]">
-                            User
-                          </p>
-                          <p className="text-xs text-gray-400">General</p>
-                        </div>
-                        <div className="text-gray-500">▾</div>
-                      </div>
-                    </div>
-                  </div>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-48">
-                  <DropdownMenuItem
-                    onClick={() => setIsLogoutModalOpen(true)}
-                    className="cursor-pointer text-red-600 focus:text-red-600 focus:bg-red-50"
-                  >
-                    <IoLogOutOutline className="mr-2 h-4 w-4" />
-                    <span>Log Out</span>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            ) : (
-              <DropdownMenu>
-                <DropdownMenuTrigger asChild>
-                  <div className="flex items-center justify-center py-2 cursor-pointer">
-                    <div className="rounded-full p-1 bg-blue-100 hover:bg-blue-200 transition-colors">
-                      <FaUserAlt className="h-4 w-4" />
-                    </div>
-                  </div>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-48">
-                  <DropdownMenuItem
-                    onClick={() => setIsLogoutModalOpen(true)}
-                    className="cursor-pointer text-red-600 focus:text-red-600 focus:bg-red-50"
-                  >
-                    <IoLogOutOutline className="mr-2 h-4 w-4" />
-                    <span>Log Out</span>
-                  </DropdownMenuItem>
-                </DropdownMenuContent>
-              </DropdownMenu>
-            )}
-
-            <div className="mt-4">
-              <button className="w-full bg-white border border-blue-100 rounded-lg py-1 flex items-center justify-center gap-3 text-blue-800 font-medium">
-                <span className="text-xl">👑</span>
-                {!isCollapsed && <span>Upgrade Plan</span>}
-              </button>
-            </div>
+        <SidebarFooter
+          className={`w-full bg-white items-center  ${
+            isCollapsed ? "px-0" : "px-0"
+          }`}
+        >
+          <div
+            className={`flex items-center ${
+              isCollapsed ? "w-full" : "w-full"
+            } py-4`}
+          >
+            <span>Log Out</span>
           </div>
         </SidebarFooter>
       </Sidebar>
@@ -246,16 +173,16 @@ function NavItem({
         asChild
         className={cn(
           active
-            ? "bg-orange-500 text-white hover:text-white hover:bg-orange-500 focus:bg-orange-600 font-medium"
-            : "bg-transparent text-gray-700 hover:bg-orange-50 hover:text-orange-500 font-medium"
+            ? "bg-[#1D7865] text-white hover:text-white hover:bg-[#1D7865] focus:bg-[#1D7865] font-medium border-l-6 border-orange-500"
+            : "bg-transparent text-gray-700 hover:bg-orange-50 hover:text-[#1D7865] font-medium "
         )}
       >
         <Link
           href={href}
           className={cn(
             collapsed
-              ? "flex items-center justify-center px-2 py-3 transition-colors rounded-full w-12 h-12 mx-auto"
-              : "flex items-center gap-3 px-4 py-3 transition-colors rounded-md"
+              ? "flex items-center justify-center px-4 py-5 transition-colors  w-full h-16 mx-auto "
+              : "flex items-center gap-3 px-4 py-5 transition-colors rounded-none "
           )}
         >
           <Icon size={collapsed ? 20 : 18} />
