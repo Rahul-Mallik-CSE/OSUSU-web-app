@@ -106,7 +106,18 @@ function DashboardSidebarContent() {
                 OSUSU
               </div>
             </div>
-            <div></div>
+            <div className="flex items-center gap-2">
+              <div>
+                <Image
+                  src="/globe.svg"
+                  alt="profile"
+                  width={40}
+                  height={40}
+                  className="rounded-full object-cover"
+                  unoptimized
+                />
+              </div>
+            </div>
           </div>
 
           <SidebarMenu
