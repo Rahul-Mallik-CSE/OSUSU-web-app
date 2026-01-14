@@ -89,12 +89,12 @@ export default function CustomTable<T extends { id: string }>({
       <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
         <Table>
           <TableHeader>
-            <TableRow className="bg-gray-50 border-b border-gray-200 ">
+            <TableRow className="bg-gray-50 border-b border-gray-200">
               {columns.map((column, index) => (
                 <TableHead
                   key={column.key}
-                  className={`text-gray-600 font-semibold text-sm py-4 ${
-                    index === 0 ? "pl-8" : ""
+                  className={`text-gray-600 font-semibold text-xs sm:text-sm py-3 sm:py-4 ${
+                    index === 0 ? "pl-4 sm:pl-8" : "px-2"
                   }`}
                   style={{ width: column.width }}
                 >
@@ -103,16 +103,18 @@ export default function CustomTable<T extends { id: string }>({
               ))}
             </TableRow>
           </TableHeader>
-          <TableBody className="mx-8 w-full">
+          <TableBody className="w-full">
             {currentData.map((item) => (
               <TableRow
                 key={item.id}
-                className="border-b border-gray-100 hover:bg-gray-50 "
+                className="border-b border-gray-100 hover:bg-gray-50"
               >
                 {columns.map((column, index) => (
                   <TableCell
                     key={column.key}
-                    className={`py-4 px-2 text-sm ${index === 0 ? "pl-8" : ""}`}
+                    className={`py-3 sm:py-4 px-2 text-xs sm:text-sm ${
+                      index === 0 ? "pl-4 sm:pl-8" : ""
+                    }`}
                   >
                     {renderCell
                       ? renderCell(item, column.key)
@@ -127,13 +129,13 @@ export default function CustomTable<T extends { id: string }>({
 
       {/* Pagination - only show if data exceeds itemsPerPage */}
       {showPagination && (
-        <div className="flex justify-center mt-6">
+        <div className="flex justify-center mt-4 sm:mt-6">
           <Pagination>
-            <PaginationContent className="flex items-center gap-2">
+            <PaginationContent className="flex items-center gap-1 sm:gap-2">
               <PaginationItem>
                 <PaginationPrevious
                   onClick={() => handlePageChange(currentPage - 1)}
-                  className={`cursor-pointer ${
+                  className={`cursor-pointer text-xs sm:text-sm ${
                     currentPage === 1 ? "pointer-events-none opacity-50" : ""
                   }`}
                 />
@@ -142,12 +144,14 @@ export default function CustomTable<T extends { id: string }>({
               {getPageNumbers().map((page, index) => (
                 <PaginationItem key={index}>
                   {page === "..." ? (
-                    <span className="px-3 py-2">...</span>
+                    <span className="px-2 sm:px-3 py-1 sm:py-2 text-xs sm:text-sm">
+                      ...
+                    </span>
                   ) : (
                     <PaginationLink
                       onClick={() => handlePageChange(page as number)}
                       isActive={currentPage === page}
-                      className={`cursor-pointer ${
+                      className={`cursor-pointer text-xs sm:text-sm px-2 sm:px-3 ${
                         currentPage === page
                           ? "bg-orange-500 text-white hover:bg-orange-600"
                           : "hover:bg-gray-100"
@@ -162,7 +166,7 @@ export default function CustomTable<T extends { id: string }>({
               <PaginationItem>
                 <PaginationNext
                   onClick={() => handlePageChange(currentPage + 1)}
-                  className={`cursor-pointer ${
+                  className={`cursor-pointer text-xs sm:text-sm ${
                     currentPage === totalPages
                       ? "pointer-events-none opacity-50"
                       : ""
