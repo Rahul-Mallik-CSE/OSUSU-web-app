@@ -15,7 +15,7 @@ import {
 export default function Home() {
   return (
     <div className="min-h-screen w-full bg-gray-50">
-      <div className="max-w-625 mx-auto p-6">
+      <div className="max-w-625 mx-auto p-3 sm:p-6">
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
           {statsData.map((stat, index) => (
