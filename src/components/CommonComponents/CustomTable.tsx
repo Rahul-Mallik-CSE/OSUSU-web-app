@@ -19,7 +19,6 @@ import {
   PaginationNext,
   PaginationPrevious,
 } from "@/components/ui/pagination";
-import { TableColumn } from "@/types/AllTypes";
 
 interface CustomTableProps<T> {
   columns: TableColumn[];

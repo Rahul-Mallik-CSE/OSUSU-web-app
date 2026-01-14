@@ -16,17 +16,19 @@ export default function StatsCard({ data }: StatsCardProps) {
       <div className="flex items-baseline gap-2">
         <span className="text-2xl font-bold text-gray-900">{data.value}</span>
         {data.currency && (
-          <span className="text-gray-600 text-sm">{data.currency}</span>
+          <span className="text-green-600 text-sm">{data.currency}</span>
         )}
         {data.highlight && (
           <span className="text-green-600 text-sm font-medium">
             {data.highlight}
           </span>
         )}
+        {data.subtitle && (
+          <p className="text-green-600 text-sm  font-semibold">
+            {data.subtitle}
+          </p>
+        )}
       </div>
-      {data.subtitle && (
-        <p className="text-gray-500 text-sm mt-1">{data.subtitle}</p>
-      )}
     </div>
   );
 }
