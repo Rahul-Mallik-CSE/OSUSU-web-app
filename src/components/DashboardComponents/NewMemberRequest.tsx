@@ -2,8 +2,6 @@
 
 "use client";
 
-import React from "react";
-import Image from "next/image";
 import { MemberRequest } from "@/types/DashboardTypes";
 import { Check, X, ChevronRight } from "lucide-react";
 
@@ -51,8 +49,8 @@ export default function NewMemberRequest({ requests }: NewMemberRequestProps) {
             }`}
           >
             <div className="flex items-center gap-2 sm:gap-3 flex-1 min-w-0">
-              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gray-300 flex items-center justify-center overflow-hidden flex-shrink-0">
-                <div className="w-full h-full bg-gradient-to-br from-blue-400 to-blue-600" />
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-gray-300 flex items-center justify-center overflow-hidden shrink-0">
+                <div className="w-full h-full bg-linear-to-br from-blue-400 to-blue-600" />
               </div>
               <div className="min-w-0 flex-1">
                 <p className="text-xs sm:text-sm font-medium text-gray-900 truncate">
@@ -64,7 +62,7 @@ export default function NewMemberRequest({ requests }: NewMemberRequestProps) {
               </div>
             </div>
 
-            <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
+            <div className="flex items-center gap-1 sm:gap-2 shrink-0">
               <button
                 onClick={() => handleApprove(request.id)}
                 className="p-1 sm:p-1.5 hover:bg-green-50 rounded transition-colors"
