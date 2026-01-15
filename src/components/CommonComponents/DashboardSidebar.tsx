@@ -34,6 +34,8 @@ import {
 import { PiUsersThreeLight } from "react-icons/pi";
 import { GoCreditCard } from "react-icons/go";
 import { TbUsersPlus } from "react-icons/tb";
+import { Button } from "../ui/button";
+import { IoIosSettings } from "react-icons/io";
 
 // import { logout } from "@/service/authService";
 export default function DashboardSidebar() {
@@ -128,17 +130,55 @@ function DashboardSidebarContent() {
           </SidebarMenu>
         </SidebarContent>
         <SidebarFooter
-          className={`w-full bg-white items-center  ${
-            isCollapsed ? "px-0" : "px-0"
+          className={`w-full bg-white border-t border-gray-200 ${
+            isCollapsed ? "px-2" : "px-3"
           }`}
         >
-          <div
-            className={`flex items-center ${
-              isCollapsed ? "w-full" : "w-full"
-            } py-4`}
-          >
-            <span>Log Out</span>
-          </div>
+          {/* User Profile Section */}
+          {!isCollapsed && (
+            <div className="py-3 space-y-3">
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-2">
+                  <div className="w-10 h-10 rounded-full bg-linear-to-br from-gray-600 to-gray-800 flex items-center justify-center overflow-hidden flex-shrink-0">
+                    <FaUserAlt className="text-white text-lg" />
+                  </div>
+                  <div className="flex flex-col min-w-0">
+                    <span className="text-sm font-semibold text-gray-900 truncate">
+                      Johson Roy
+                    </span>
+                    <span className="text-xs text-gray-500">Verified</span>
+                  </div>
+                </div>
+                <button className="p-1 cursor-pointer bg-transparent text-black hover:bg-gray-100 rounded-md transition-colors shrink-0">
+                  <IoIosSettings className="w-8 h-8 text-green-800" />
+                </button>
+              </div>
+
+              {/* Log Out Button */}
+              <button
+                onClick={() => setIsLogoutModalOpen(true)}
+                className="w-full cursor-pointer flex items-center justify-center gap-2 px-3 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-md transition-colors"
+              >
+                <IoLogOutOutline className="w-5 h-5" />
+                <span>Log Out</span>
+              </button>
+            </div>
+          )}
+
+          {/* Collapsed State */}
+          {isCollapsed && (
+            <div className="py-3 flex flex-col items-center gap-2">
+              <button className="p-1 cursor-pointer bg-transparent text-black hover:bg-gray-100 rounded-md transition-colors shrink-0">
+                <IoIosSettings className="w-8 h-8 text-green-800" />
+              </button>
+              <button
+                onClick={() => setIsLogoutModalOpen(true)}
+                className="p-2 cursor-pointer hover:bg-gray-100 rounded-md transition-colors"
+              >
+                <IoLogOutOutline className="w-5 h-5 text-gray-700" />
+              </button>
+            </div>
+          )}
         </SidebarFooter>
       </Sidebar>
       <LogoutModal
