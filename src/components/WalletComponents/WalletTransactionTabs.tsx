@@ -79,8 +79,8 @@ export default function WalletTransactionTabs({
         Transaction
       </h2>
 
-      <Tabs defaultValue="contribution" className="w-full">
-        <TabsList className="grid w-full sm:w-auto grid-cols-3 mb-6 bg-gray-100 p-1 rounded-lg">
+      <Tabs defaultValue="contribution" className="w-full ">
+        <TabsList className="grid  h-12  grid-cols-3 mb-6 bg-gray-100 p-1 rounded-lg">
           <TabsTrigger
             value="contribution"
             className="text-xs sm:text-sm data-[state=active]:bg-white data-[state=active]:text-gray-900 px-3 sm:px-6 py-2"

@@ -24,7 +24,7 @@ const WalletPage = () => {
 
   return (
     <div className="min-h-screen w-full bg-gray-50">
-      <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+      <div className="w-full max-w-625 mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
         {/* Stats Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 lg:gap-6 mb-6">
           {statsCardData.map((stat, index) => (
