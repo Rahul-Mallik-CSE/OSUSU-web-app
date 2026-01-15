@@ -110,7 +110,7 @@ function DashboardSidebarContent() {
 
           <SidebarMenu
             className={
-              isCollapsed ? "px-0 space-y-2 items-center" : "md:px-0 space-y-2"
+              isCollapsed ? "px-0 space-y-0 items-center" : "md:px-0 space-y-0"
             }
           >
             {navItems.map((item) => (
